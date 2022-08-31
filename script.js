@@ -1,5 +1,6 @@
 //variables/constants here please
-let numStringInput1 = "0";
+const calcDisplay = document.querySelector("#calcDisplay");
+let numStringInput1 = "";
 let numStringInput2 = "";
 
 let operatorSign = "";
@@ -73,3 +74,56 @@ function operate(operatorSign) {    //would it be/look better if this function t
     }
     else return numStringInput1;
 }
+
+//writing out loose logic for the buttonHandler functions... may need to heavily modify once eventListeners are added?
+
+function operationButtonHandler(e) {
+    operatorSign = e.target.textContent;
+    calcDisplay.textContent = e.target.textContent;
+
+    if (numStringInput1 !== "" && numStringInput2 !== "") {
+        solution = operate(operatorSign);
+        numStringInput2 = "";
+        numStringInput1 = solution;
+    } 
+}
+
+function equalsButtonHandler() {
+    if (numStringInput1 !== "" && numStringInput2 !== "") {
+        solution = operate(operatorSign);
+        calcDisplay.textContent = solution;
+        operatorSign = "";
+        numStringInput2 = "";
+        numStringInput1 = solution;
+    }
+}
+
+function numberButtonHandler(e) {
+    if (operatorSign === "") {
+        numStringInput1 += e.target.textContent;
+        calcDisplay.textContent += e.target.textContent;
+    } 
+    else if (operatorSign !== "") {
+        numStringInput2 += e.target.textContent;
+        calcDisplay.textContent += e.target.textContent;
+    }
+}
+
+//button eventlisteners go here, once UI is established
+const numberButtons = document.querySelectorAll(".numberButton");
+
+numberButtons.forEach(button => {
+    button.addEventListener('click', e => numberButtonHandler(e) );
+});
+
+const operationButtons = document.querySelectorAll(".operationButton");
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', e => operationButtonHandler(e));
+});
+
+const equalsButton = document.querySelector("#equals");
+
+equalsButton.addEventListener('click', equalsButtonHandler);
+
+//also need to update calcDisplay somehow

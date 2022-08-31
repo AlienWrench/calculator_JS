@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 50px;
+}
+
+#calculator {
+    background-color: rgb(0, 217, 255);
+    width: 400px;
+    height: 600px;
+    border-radius: 25px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#displayContainer{
+    height: 120px;
+    display: flex;
+    align-items: center;
+}
+
+#calcDisplay {
+    background-color: rgb(112, 128, 141);
+    width: 350px;
+    height: 60px;
+    border-radius: 10px;
+
+    font-size: 40px;
+    padding: 10px;
+}
+
+#numberButtonContainer {
+    display: flex;
+    padding: 0px 0px 30px 30px;
+    margin-left: -50px;
+    margin-top: -20px;
+
+    width: 300px; 
+
+    flex-wrap: wrap;
+}
+
+.numberButton {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border-radius: 50px;
+    color: white;
+    background-color: rgb(202, 160, 19);
+
+    font-size: 20px;
+
+    flex: 1 0 auto;
+
+    border: 0px;
+}
+
+#operationButtonContainer {
+    margin-top: -20px;
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+}
+
+.operationButton {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border-radius: 50px;
+    color: white;
+    background-color: rgb(212, 95, 16);
+    border: 0px;
+
+    font-size: 20px;
+}
+
+#equals {
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border-radius: 50px;
+    color: white;
+    background-color: rgb(212, 95, 16);
+    border: 0px;
+
+    font-size: 20px;
+}
