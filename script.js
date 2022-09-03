@@ -78,8 +78,12 @@ function operate(operatorSign) {    //would it be/look better if this function t
 //writing out loose logic for the buttonHandler functions... may need to heavily modify once eventListeners are added?
 
 function operationButtonHandler(e) {
+    if (numStringInput1 == "") {
+        return;
+    }
+    
     operatorSign = e.target.textContent;
-    calcDisplay.textContent = e.target.textContent;
+    calcDisplay.textContent = `${numStringInput1} ` + e.target.textContent +  ' '; //tidies up the display a tiny bit
 
     if (numStringInput1 !== "" && numStringInput2 !== "") {
         solution = operate(operatorSign);
@@ -99,6 +103,12 @@ function equalsButtonHandler() {
 }
 
 function numberButtonHandler(e) {
+    if (calcDisplay.textContent == solution && operatorSign === "") {
+        calcDisplay.textContent = "";
+        numStringInput1 = "";
+    }
+
+    
     if (operatorSign === "") {
         numStringInput1 += e.target.textContent;
         calcDisplay.textContent += e.target.textContent;
