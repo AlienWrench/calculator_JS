@@ -86,9 +86,7 @@ function operationButtonHandler(e) {
     calcDisplay.textContent = `${numStringInput1} ` + e.target.textContent +  ' '; //tidies up the display a tiny bit
 
     if (numStringInput1 !== "" && numStringInput2 !== "") {
-        solution = operate(operatorSign);
-        numStringInput2 = "";
-        numStringInput1 = solution;
+        equalsButtonHandler();
     } 
 }
 
@@ -119,6 +117,25 @@ function numberButtonHandler(e) {
     }
 }
 
+function decimalButtonHandler(e) {
+    if (numStringInput1.includes(e.target.textContent) && operatorSign == "") {
+        return;
+    } else if (operatorSign == "") {
+        numStringInput1 += e.target.textContent;
+        calcDisplay.textContent += e.target.textContent;
+    } else if (operatorSign !== "") {
+        numStringInput2 += e.target.textContent;
+        calcDisplay.textContent += e.target.textContent;
+    }
+}
+
+function clearButtonHandler() {
+    numStringInput1 = "";
+    numStringInput2 = "";
+    operatorSign = "";
+    calcDisplay.textContent = "";
+}
+
 //button eventlisteners go here, once UI is established
 const numberButtons = document.querySelectorAll(".numberButton");
 
@@ -132,8 +149,13 @@ operationButtons.forEach(button => {
     button.addEventListener('click', e => operationButtonHandler(e));
 });
 
+const decimalButton = document.querySelector("#decimal");
+
+decimalButton.addEventListener('click', e => decimalButtonHandler(e));
 const equalsButton = document.querySelector("#equals");
 
 equalsButton.addEventListener('click', equalsButtonHandler);
 
-//also need to update calcDisplay somehow
+const clearButton = document.querySelector("#clear");
+
+clearButton.addEventListener('click', clearButtonHandler);
